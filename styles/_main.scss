@@ -1,0 +1,267 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+h2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+  text-align: center;
+}
+
+.slick-dots {
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+
+  button {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 10px 5px;
+    color: transparent;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  li.slick-active button {
+    background-color: #fff;
+  }
+}
+
+.header {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  h3 {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 10%;
+  }
+
+  h4 {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.3em;
+    margin: 0 10%;
+  }
+
+  &__bottom-button {
+    margin: 0 auto;
+  }
+
+  > img,
+  .gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .gradient-overlay {
+    z-index: -2;
+    background: linear-gradient(to left, #7e5aff 0%, #55b7ff 100%);
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    width: 80%;
+    .menu-link::before {
+      content: "";
+      display: inline-block;
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      color: transparent;
+      margin-right: 15px;
+    }
+
+    .menu-link.active::before {
+      background-color: white;
+    }
+  }
+
+  .navigation,
+  .navigation > ul,
+  .social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navigation > ul {
+    list-style-type: none;
+    a {
+      padding: 0 10px;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+  .social {
+    margin: 0;
+    &__item:hover {
+      path {
+        fill: #161927;
+      }
+    }
+  }
+  nav {
+    margin: 0 10%;
+  }
+
+  .slick-dots {
+    right: 10%;
+    top: 0px;
+  }
+}
+
+header {
+  height: 100vh;
+}
+
+section {
+  height: 100vh;
+  background-color: #55b7ff;
+  .divider {
+    width: 100px;
+    border-bottom: 1px solid black;
+    margin: 0 auto;
+    padding-top: 100px;
+  }
+}
+
+#projects {
+  height: 1200px;
+}
+
+#projects .wrapper {
+  max-width: 1170px;
+  margin: 0 auto;
+  > div {
+    display: flex;
+  }
+
+  .projects__bottom {
+    justify-content: flex-end;
+  }
+}
+
+#news {
+  .news__slider {
+    display: flex;
+    > button {
+      background: transparent;
+      border: none;
+    }
+  }
+  .slick-dots {
+    bottom: -48px;
+    left: 47%;
+    display: flex;
+  }
+}
+
+#gallery {
+  background-color: #fff;
+  height: auto;
+  .grid-container {
+    position: relative;
+    max-width: 1170px;
+    margin: 40px auto;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .grid-item {
+    cursor: pointer;
+    position: relative;
+    transition: filter 0.3s;
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url(assets/image/zoom-in-icon.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 50px;
+      height: 50px;
+      z-index: 0;
+    }
+  }
+
+  .grid-item.hidden {
+    display: none;
+  }
+
+  .grid-item.first {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+  }
+  img {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .fullscreen {
+    position: absolute;
+    transform: scale(1.8);
+    z-index: 9999;
+    background-color: #fff;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    display: none;
+  }
+
+  #show-more-btn {
+    position: absolute;
+    bottom: -30px;
+    left: 46%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .header .slick-dots {
+    position: initial;
+    display: flex;
+    justify-content: center;
+  }
+}
