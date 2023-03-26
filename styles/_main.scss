@@ -1,3 +1,11 @@
+$color-primary: #2c4058;
+$color-secondary: #55b7ff;
+$color-tertiary: #7e5aff;
+$font-size-base: 18px;
+$font-size-sm: 14px;
+$font-size-md: 22px;
+$font-size-lg: 44px;
+
 * {
   box-sizing: border-box;
 }
@@ -11,12 +19,25 @@ body {
 }
 
 h2 {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 54px;
+  @include font-montserrat(normal, 700, $font-size-lg, 54px);
   text-align: center;
+}
+
+.main-button {
+  cursor: pointer;
+  padding: 12px 43px;
+  color: $color-primary;
+  @include font-montserrat(normal, 400, $font-size-sm, 17px);
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid $color-primary;
+
+  &:hover {
+    background-color: $color-secondary;
+    border-color: white;
+    color: white;
+    transition: ease-in 0.2s;
+  }
 }
 
 .slick-dots {
@@ -28,8 +49,8 @@ h2 {
     background-color: transparent;
     border: 1px solid white;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 12px;
     margin: 10px 5px;
     color: transparent;
     &:hover {
@@ -46,60 +67,69 @@ h2 {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   h3 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 80px;
+    @include font-montserrat(normal, 700, 80px, null);
     letter-spacing: 0.1em;
+    text-align: center;
     text-transform: uppercase;
     margin: 0 10%;
   }
 
   h4 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
+    @include font-montserrat(normal, 400, 18px, $font-size-md);
     letter-spacing: 0.3em;
+    text-align: center;
     margin: 0 10%;
   }
 
   &__bottom-button {
+    padding: 20px;
     margin: 0 auto;
   }
 
   > img,
   .gradient-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    @include position-absolute(0, 0, 100%, 100vh);
     z-index: -1;
   }
 
   .gradient-overlay {
     z-index: -2;
-    background: linear-gradient(to left, #7e5aff 0%, #55b7ff 100%);
+    background: linear-gradient(
+      to left,
+      $color-tertiary 0%,
+      $color-secondary 100%
+    );
+  }
+
+  .slider {
+    margin-top: 20%;
   }
 
   .navigation {
+    @include flex-centered;
     position: fixed;
     top: 0;
-    width: 80%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+      to left,
+      $color-tertiary 0%,
+      $color-secondary 100%
+    );
+    z-index: 1000;
+    margin: 0 auto;
+
     .menu-link::before {
       content: "";
       display: inline-block;
       background-color: transparent;
       border: 1px solid white;
       border-radius: 50%;
-      width: 12px;
-      height: 12px;
-      color: transparent;
+      width: 10px;
+      height: 10px;
       margin-right: 15px;
     }
 
@@ -108,20 +138,26 @@ h2 {
     }
   }
 
-  .navigation,
   .navigation > ul,
   .social {
-    display: flex;
-    align-items: center;
+    @include flex-centered;
     justify-content: space-between;
   }
   .navigation > ul {
     list-style-type: none;
+    font-family: "Source Sans Pro", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: $font-size-sm;
+    line-height: 18px;
     a {
       padding: 0 10px;
       color: white;
       text-transform: uppercase;
       text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -133,13 +169,10 @@ h2 {
       }
     }
   }
-  nav {
-    margin: 0 10%;
-  }
 
   .slick-dots {
     right: 10%;
-    top: 0px;
+    top: -20px;
   }
 }
 
@@ -149,7 +182,6 @@ header {
 
 section {
   height: 100vh;
-  background-color: #55b7ff;
   .divider {
     width: 100px;
     border-bottom: 1px solid black;
@@ -159,32 +191,170 @@ section {
 }
 
 #projects {
-  height: 1200px;
-}
+  height: fit-content;
 
-#projects .wrapper {
-  max-width: 1170px;
-  margin: 0 auto;
-  > div {
-    display: flex;
+  .img-wrapper {
+    position: relative;
+    width: 630px;
+    &::before {
+      @include position-absolute(-15%, -34%, 585px, 470px);
+      z-index: 9;
+      content: " ";
+      display: block;
+      background-color: $color-secondary;
+    }
   }
 
-  .projects__bottom {
-    justify-content: flex-end;
+  .img-wrapper.bot {
+    &::before {
+      background-color: $color-tertiary;
+      top: -15%;
+      left: initial;
+      right: -34%;
+    }
+  }
+
+  img {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+  .wrapper {
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 150px;
+    > div {
+      display: flex;
+      margin-top: 100px;
+    }
+
+    .projects {
+      &__bottom {
+        justify-content: flex-end;
+      }
+
+      &__sub {
+        @include font-montserrat(normal, 400, $font-size-md, 27px);
+        margin: 10px 0;
+      }
+
+      &__desc {
+        max-width: 50%;
+      }
+
+      &__desc.top {
+        padding-left: 70px;
+      }
+
+      &__desc.bot {
+        padding-right: 70px;
+      }
+
+      &__header {
+        @include font-montserrat(normal, 700, $font-size-lg, 54px);
+        text-transform: uppercase;
+        margin: 20px 0;
+      }
+      &__text {
+        color: #4b5562;
+        font-family: "Open Sans";
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+        margin-bottom: 34px;
+      }
+
+      &__adress {
+        color: $color-primary;
+        font-family: "Open Sans";
+        font-style: italic;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        margin-top: 50px;
+      }
+    }
   }
 }
 
 #news {
-  .news__slider {
-    display: flex;
-    > button {
-      background: transparent;
-      border: none;
+  background: linear-gradient(237.1deg, #24ccfa 11.16%, #3c7fd4 89.18%);
+
+  h2 {
+    color: white;
+  }
+
+  .news {
+    &__slider {
+      max-width: 1450px;
+      margin: 0 auto;
+      display: flex;
+      > button {
+        margin: 40px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    &__card > * {
+      margin-right: 30px;
+    }
+
+    &__card p {
+      margin: 0;
+      padding: 10px;
+    }
+
+    &__img {
+      width: 100%;
+      max-height: 212px;
+    }
+    &__slider__title {
+      @include font-montserrat(normal, 700, $font-size-md, 27px);
+      background-color: #fff;
+      color: $color-primary;
+    }
+
+    &__slider__text {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 40px;
+      background-color: #fff;
+      color: $color-primary;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__slider__author {
+      @include font-montserrat(normal, 400, 18px, $font-size-md);
+      background-color: #fff;
+      color: $color-primary;
+      display: flex;
+      padding: 30px 20px;
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+    &__slider__date {
+      @include font-montserrat(normal, 400, $font-size-sm, 17px);
+      color: $color-secondary;
+      display: block;
     }
   }
   .slick-dots {
-    bottom: -48px;
-    left: 47%;
+    bottom: -66px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
   }
 }
@@ -192,9 +362,10 @@ section {
 #gallery {
   background-color: #fff;
   height: auto;
+  padding-bottom: 200px;
   .grid-container {
     position: relative;
-    max-width: 1170px;
+    max-width: 1200px;
     margin: 40px auto;
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(4, 1fr);
@@ -205,24 +376,17 @@ section {
     cursor: pointer;
     position: relative;
     transition: filter 0.3s;
-
-    &:hover::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-image: url(assets/image/zoom-in-icon.svg);
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 50px;
-      height: 50px;
-      z-index: 0;
-    }
   }
 
   .grid-item.hidden {
     display: none;
+  }
+
+  #show-more-btn {
+    @include position-absolute(null, 50%, null, null);
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .grid-item.first {
@@ -233,28 +397,94 @@ section {
     max-width: 100%;
     height: 100%;
   }
+}
 
-  .fullscreen {
-    position: absolute;
-    transform: scale(1.8);
-    z-index: 9999;
-    background-color: #fff;
+#map-sec {
+  height: 700px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#contact {
+  background-color: #fff;
+  max-width: 770px;
+  max-height: 450px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 400px;
+  margin: 0 auto;
+  padding: 60px;
+  .divider {
+    padding: 0;
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9998;
-    display: none;
+  .contact {
+    &__info {
+      display: flex;
+      > * {
+        width: 50%;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      input {
+        width: 100%;
+        padding-bottom: 17px;
+        border: none;
+        border-bottom: 1px solid $color-primary;
+        color: $color-primary;
+        @include font-montserrat(normal, 400, 18px, $font-size-md);
+        outline: none;
+        background-color: #ffffff;
+        opacity: 0.5;
+        margin-bottom: 34px;
+      }
+    }
+    &__about-us {
+      p {
+        margin-bottom: 30px;
+        @include font-montserrat(normal, 400, 18px, $font-size-md);
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
   }
+}
 
-  #show-more-btn {
-    position: absolute;
-    bottom: -30px;
-    left: 46%;
+footer {
+  height: 550px;
+  background: linear-gradient(
+    251.06deg,
+    $color-tertiary -2.19%,
+    $color-secondary 103.21%
+  );
+  .navigation-bottom {
+    max-width: 770px;
+    margin: 0 auto;
+    padding-top: 200px;
+    display: flex;
+    justify-content: space-between;
+    .social {
+      list-style-type: none;
+      display: flex;
+      &__item:hover {
+        path {
+          fill: #161927;
+        }
+      }
+      li {
+        margin: 10px;
+      }
+    }
   }
 }
 

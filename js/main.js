@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   // Slider
   $(".slider").slick({
@@ -47,57 +46,35 @@ $(document).ready(function () {
 
   // News Slider
   $(".news__slider").slick({
+    autoplay: true,
+    autoplaySpeed: 4000,
     dots: true,
-    infinite: false,
-    speed: 300,
+    infinite: true,
+    speed: 1000,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     nextArrow:
       '<button type="button" class="slick-next"><img src="assets/image/right-arrow.svg" alt="arrow"></button>',
     prevArrow:
       '<button type="button" class="slick-prev"><img src="assets/image/left-arrow.svg" alt="arrow"></button>',
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
     ],
-  });
-
-  // Grid Items
-  $(".grid-item").on("click contextmenu", function (event) {
-    event.preventDefault();
-
-    if (
-      event.type === "click" &&
-      event.target.tagName.toLowerCase() === "img"
-    ) {
-      $(this).find("img").toggleClass("fullscreen");
-    } else {
-      $(".grid-item img").removeClass("fullscreen");
-    }
-
-    $(".overlay").css(
-      "display",
-      $(".grid-item img.fullscreen").length > 0 ? "block" : "none"
-    );
-  });
-
-  $(document).keyup(function (event) {
-    if (event.keyCode === 27) {
-      $(".grid-item img").removeClass("fullscreen");
-      $(".overlay").css("display", "none");
-    }
   });
 
   // Show More Button
