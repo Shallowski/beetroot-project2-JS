@@ -574,10 +574,10 @@ section .divider {
 #projects .wrapper .projects__desc {
   max-width: 50%;
 }
-#projects .wrapper .projects .top {
+#projects .wrapper .projects__desc.top {
   padding: 0 10px 0 70px;
 }
-#projects .wrapper .projects .bot {
+#projects .wrapper .projects__desc.bot {
   padding: 0 70px 0 10px;
 }
 #projects .wrapper .projects__header {
