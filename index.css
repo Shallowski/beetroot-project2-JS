@@ -780,6 +780,7 @@ section .divider {
   bottom: 400px;
   margin: 0 auto;
   padding: 60px;
+  z-index: 10;
 }
 #contact .divider {
   padding: 0;
