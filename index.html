@@ -21,7 +21,7 @@
     <div class="gradient-overlay"></div>
     <nav class="navigation">
       <div class="header__logo"><a href="#"><img src="assets/image/logo.svg" alt="logo"></a></div>
-      <ul class="menu">
+      <ul id="menu">
         <li><a href="#about-us" class="menu-link" data-section="#about-us">About us</a></li>
         <li><a href="#projects" class="menu-link" data-section="#projects">Projects</a></li>
         <li><a href="#news" class="menu-link" data-section="#news">News</a></li>
@@ -60,6 +60,9 @@
           </a>
         </li>
       </ul>
+      <div class="burger-menu">
+        <div class="burger"></div>
+      </div>
     </nav>
     <div class="slider">
       <div>
@@ -90,7 +93,7 @@
     <h2>WHAT WE DO</h2>
     <div class="wrapper">
       <div class="projects__top">
-        <div class="img-wrapper">
+        <div class="img-wrapper top">
           <img src="assets/image/project-first-image.png" alt="projects-example">
         </div>
         <div class="projects__desc top">
@@ -136,10 +139,13 @@
     </div>
   </section>
   <section id="news">
+    <img class="bg-image" src="assets/image/news-background.png" alt="news-bg">
+    <div class="overlay"></div>
     <div class="divider"></div>
     <h2>LATEST NEWS</h2>
     <div class="news__slider">
-      <div class="news__card"><div><img class="news__img" src="assets/image/news-image1.png" alt="news-image"></div>
+      <div class="news__card">
+        <div><img class="news__img" src="assets/image/news-image1.png" alt="news-image"></div>
         <div class="news__slider__description">
           <p class="news__slider__title">SEE THE UNMATCHED BEAUTY OF THE GREAT.</p>
           <p class="news__slider__text">Free directories: directories are perfect for customers that are searching
@@ -149,7 +155,8 @@
           <p news__slider__author__name> ALJA BRUN<span class="news__slider__date">20 Jan 2020</span></p>
         </div>
       </div>
-      <div class="news__card"><div><img class="news__img" src="assets/image/news-image2.png" alt="news-image"></div>
+      <div class="news__card">
+        <div><img class="news__img" src="assets/image/news-image2.png" alt="news-image"></div>
         <div class="news__slider__description">
           <p class="news__slider__title">EFFECTIVE ADVERTISING POINTERS.</p>
           <p class="news__slider__text">Having a home based business is a wonderful asset to your life....</p>
@@ -158,7 +165,8 @@
           <p news__slider__author__name> DOMINIC FREEMAN<span class="news__slider__date">13 Dec 2019</span></p>
         </div>
       </div>
-      <div class="news__card"><div><img class="news__img" src="assets/image/news-image3.png" alt="news-image"></div>
+      <div class="news__card">
+        <div><img class="news__img" src="assets/image/news-image3.png" alt="news-image"></div>
         <div class="news__slider__description">
           <p class="news__slider__title">HYPNOTIZE YOURSELF INTO THE GHOST.</p>
           <p class="news__slider__text">There are many things that are important to catalog design...</p>
@@ -171,7 +179,8 @@
         <div><img class="news__img" src="assets/image/news-image4.png" alt="news-image"></div>
         <div class="news__slider__description">
           <p class="news__slider__title">EXPLORE THE WONDERS OF SPACE TRAVEL.</p>
-          <p class="news__slider__text">Learn about the latest advancements in space exploration and the opportunities for future generations...</p>
+          <p class="news__slider__text">Learn about the latest advancements in space exploration and the opportunities
+            for future generations...</p>
         </div>
         <div class="news__slider__author">
           <img src="assets/image/news-author-picture2.png" alt="author">
@@ -182,7 +191,8 @@
         <div><img class="news__img" src="assets/image/news-image5.png" alt="news-image"></div>
         <div class="news__slider__description">
           <p class="news__slider__title">DISCOVER THE SECRETS OF ANCIENT CIVILIZATIONS.</p>
-          <p class="news__slider__text">Uncover the mysteries of ancient civilizations and their impact on modern society...</p>
+          <p class="news__slider__text">Uncover the mysteries of ancient civilizations and their impact on modern
+            society...</p>
         </div>
         <div class="news__slider__author">
           <img src="assets/image/news-author-picture3.png" alt="author">
@@ -290,6 +300,8 @@
       allowfullscreen></iframe>
   </section>
   <footer>
+    <img class="bg-image" src="assets/image/scott-webb-176434.png" alt="footer-bg">
+    <div class="overlay"></div>
     <nav class="navigation-bottom">
       <div class="header__logo"><a href="#"><img src="assets/image/logo.svg" alt="logo"></a></div>
       <ul class="social">
@@ -324,7 +336,11 @@
           </a>
         </li>
       </ul>
+      
     </nav>
+    <p class="copyright">
+      Copyrights © 2020 Montichello
+    </p>
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
