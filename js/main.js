@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   // Slider
   $(".slider").slick({
-    autoplay: true,
+    autoplay: false,
     dots: true,
     vertical: true,
     verticalSwiping: true,
