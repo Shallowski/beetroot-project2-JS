@@ -44,7 +44,7 @@ $(document).ready(function () {
   });
 
   $(window).scroll(function () {
-    let currentScroll = $(this).scrollTop() + 1;
+    let currentScroll = $(this).scrollTop() + 10;
     let $currentSection;
 
     for (let section in sectionOffsets) {
