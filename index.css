@@ -584,6 +584,7 @@ section .divider {
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
+  display: block;
   margin: 10px 0;
 }
 #projects .wrapper .projects__desc {
