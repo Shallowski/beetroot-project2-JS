@@ -238,6 +238,7 @@ section {
   .img-wrapper {
     position: relative;
     max-width: 630px;
+    line-height: 0;
     &::before {
       @include position-absolute(-15%, null, 585px, 470px);
       z-index: 9;
@@ -617,7 +618,7 @@ footer {
       display: block;
     }
     .navigation {
-      justify-content: space-around;
+      justify-content: space-between;
       & .social {
         display: none;
       }

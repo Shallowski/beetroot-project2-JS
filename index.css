@@ -536,6 +536,7 @@ section .divider {
 #projects .img-wrapper {
   position: relative;
   max-width: 630px;
+  line-height: 0;
 }
 #projects .img-wrapper::before {
   position: absolute;
@@ -909,7 +910,7 @@ footer .copyright {
     display: block;
   }
   .header .navigation {
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .header .navigation .social {
     display: none;
